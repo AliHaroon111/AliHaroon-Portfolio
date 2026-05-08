@@ -23,7 +23,7 @@ function type(){
         wordIndex = (wordIndex + 1) % words.length;
         setTimeout(type, 500);
     } else {
-        setTimeout(type, isDeleting ? 50 : 150);
+        setTimeout(type, isDeleting ? 10 : 30);
     }
 
 }
