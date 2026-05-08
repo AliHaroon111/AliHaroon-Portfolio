@@ -153,3 +153,47 @@ section {
     text-transform: uppercase;
     letter-spacing: 1px;
 }
+
+/* Phase 3 Skill grid */
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+}
+
+.section-title span {
+    color: var(--neon-cyan);
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(aut-fit, minmax(200px, 1ff));
+    gap: 25px;
+}
+
+.skill-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 30px;
+    text-align: center;
+    transition: 0.4s ease;
+    backdrop-filter: blur(5px);
+}
+
+.skill-card :hover{
+    color: var(--neon-cyan);
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px rgba(0, 238, 255, 0.2);
+}
+
+.skill-card h3 {
+    color: var(--neon-cyan);
+    margin: 15px 0 10px;
+}
+
+.skill-card p {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+}
