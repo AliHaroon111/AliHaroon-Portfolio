@@ -168,7 +168,7 @@ section {
 
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(aut-fit, minmax(200px, 1ff));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1ff));
     gap: 25px;
 }
 
@@ -182,7 +182,7 @@ section {
     backdrop-filter: blur(5px);
 }
 
-.skill-card :hover{
+.skill-card:hover{
     color: var(--neon-cyan);
     transform: translateY(-10px);
     box-shadow: 0 0 20px rgba(0, 238, 255, 0.2);
@@ -196,4 +196,43 @@ section {
 .skill-card p {
     color: var(--text-gray);
     font-size: 0.9rem;
+}
+
+
+/*Phase The Services Section */
+.services-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.service-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 50px 30px;
+    border-radius: 20px;
+    text-align: center;
+    transition: 0.5s ease;
+    backdrop-filter: blur(10px);
+}
+
+.service-card:hover {
+    border-color: var(--primary-blue);
+    transform: scale(1.02);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.service-card i {
+    font-size: 3rem;
+    color: var(--neon-cyan);
+    margin-bottom: 20px;
+}
+
+.service-card h3 {
+    font-size: 1.5rem;   
+    margin-bottom: 20px;
+}
+.service-card p {
+    color: var(--text-gray);
+    line-height: 1.6;
 }
