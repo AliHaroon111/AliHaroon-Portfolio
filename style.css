@@ -111,3 +111,45 @@ header {
 section {
     padding: 100px 10% 20px;
 }
+
+
+/* About Section Phase 2 */
+
+.about-container {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.about-text h2 span{
+ color: var(--neon-cyan);
+}
+
+.stats-ribbon {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-item h3 {
+    font-size: 2.5rem;
+    color: var(--neon-cyan);
+    margin-bottom: 5px;
+}
+
+.stat-item p {
+    font-size: 1rem;
+    color: var(--text-gray);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
