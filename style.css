@@ -1,26 +1,113 @@
-/* Root variables for easy color changes */
+/* Root variables - Updated for a dark, modern look */
 :root {
     --primary-blue: #018DED;
-    --bg-color: #f4f4f4;
-    --text-dark: #333;
-  }
-  
-  body {
-    background-color: var(--bg-color);
+    --neon-cyan: #00eeff;
+    --bg-color: #080808; /* Dark background for better glow */
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --text-white: #ffffff;
+    --text-gray: #b5b5b5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     font-family: 'Helvetica Neue', sans-serif;
-    color: var(--text-dark);
-    margin: 0;
-    padding: 20px;
-  }
-  
-  header {
-    text-align: center;
-    padding: 50px;
-    background: white;
-    border-bottom: 5px solid var(--primary-blue);
-  }
-  
-  h1 {
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-white);
+    overflow-x: hidden;
+}
+
+/* 1. Glassmorphic Header Requirement */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 20px 10%;
+    background: var(--card-bg);
+    backdrop-filter: blur(10px); /* The requirement! */
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+}
+
+.navbar a {
+    color: var(--text-white);
+    text-decoration: none;
+    margin-left: 2rem;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.navbar a:hover {
+    color: var(--neon-cyan);
+}
+
+/* 2. Hero Section & Layout */
+.home {
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10%;
+}
+
+.hero-info h1 {
+    font-size: 3.5rem;
+    color: var(--text-white);
+    margin-bottom: 10px;
+}
+
+.hero-info h3 {
+    font-size: 1.8rem;
     color: var(--primary-blue);
-    margin: 0;
-  }
+}
+
+/* 3. Glowing Profile Circle Requirement */
+.profile-glow {
+    position: relative;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    /* Gradient border requirement */
+    background: linear-gradient(45deg, var(--primary-blue), var(--neon-cyan));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Neon Halo effect */
+    box-shadow: 0 0 20px var(--primary-blue), 0 0 50px rgba(1, 141, 237, 0.3);
+}
+
+.profile-img-box {
+    width: 96%;
+    height: 96%;
+    background: var(--bg-color);
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Typewriter Span Styling */
+.typewriter {
+    color: var(--neon-cyan);
+    font-weight: bold;
+}
+
+/* Generic Section Padding */
+section {
+    padding: 100px 10% 20px;
+}
