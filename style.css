@@ -1,0 +1,26 @@
+/* Root variables for easy color changes */
+:root {
+    --primary-blue: #018DED;
+    --bg-color: #f4f4f4;
+    --text-dark: #333;
+  }
+  
+  body {
+    background-color: var(--bg-color);
+    font-family: 'Helvetica Neue', sans-serif;
+    color: var(--text-dark);
+    margin: 0;
+    padding: 20px;
+  }
+  
+  header {
+    text-align: center;
+    padding: 50px;
+    background: white;
+    border-bottom: 5px solid var(--primary-blue);
+  }
+  
+  h1 {
+    color: var(--primary-blue);
+    margin: 0;
+  }
