@@ -1,4 +1,6 @@
 const textElement = document.querySelector('.typewriter')
+let sections = document.querySelectorAll('section')
+let navLinks = document.querySelectorAll('header nav a');
 const words = ["Full Stack Developer", "BSCS Student", "Node.js Enthusiast"];
 let wordIndex = 0;
 let charIndex = 0;
@@ -26,6 +28,24 @@ function type(){
         setTimeout(type, isDeleting ? 10 : 30);
     }
 
+}
+
+// Navbar Scroll
+window.onscroll = ()=>{
+    sections.forEach(section => {
+        let top =window.scrollY;
+        let offset = section.offsetTop - 150;
+        let height = section.offsetHeight;
+        let id = section.getAttribute('id');
+
+        if(top >= offset && top < offset + height) {
+            navLinks.forEach(links => {
+                links.classList.remove('active');
+                document.querySelector('header nav a[href*=' + id + ']').classList.add('active')
+            });
+        }
+        
+    });
 }
 
 type();
