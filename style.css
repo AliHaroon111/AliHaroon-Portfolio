@@ -388,6 +388,37 @@ nav a.active {
     transition: 0.4s;
 }
 
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 40px 10%;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: 60px;
+    color: var(--text-gray);
+    font-size: 0.9rem;
+}
+
+.footer span {
+    color: var(--neon-cyan);
+    font-weight: 600;
+}
+
+.footer-sub {
+    margin-top: 6px;
+    font-size: 0.8rem;
+    opacity: 0.6;
+}
+
+
+
+/*  mobile responsive CSS */
+
+
+/* See below */
+
+
+
+
 /*  mobile responsive CSS */
 /* ===== HAMBURGER BUTTON ===== */
 .hamburger {
