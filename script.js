@@ -32,6 +32,16 @@ function type(){
 
 // Navbar Scroll
 window.onscroll = ()=>{
+
+    // 1. Check if we are at the very bottom of the page (Contact Scroll make issue without it)
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 2) {
+        navLinks.forEach(links => {
+            links.classList.remove('active');
+        });
+        document.querySelector('header nav a[href*="contact"]').classList.add('active');
+        return; // Stop the rest of the function from running
+    }
+
     sections.forEach(section => {
         let top =window.scrollY;
         let offset = section.offsetTop - 150;
