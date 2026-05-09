@@ -1,11 +1,14 @@
 const textElement = document.querySelector('.typewriter')
 let sections = document.querySelectorAll('section')
 let navLinks = document.querySelectorAll('header nav a');
+// Hamburger menu toggle
+const hamburger = document.getElementById('hamburger');
+const navbar = document.getElementById('navbar');
 const words = ["Full Stack Developer", "BSCS Student", "Node.js Enthusiast"];
 let wordIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
-
+// For Type writer
 function type(){
     const currentWord = words[wordIndex];
 
@@ -57,5 +60,17 @@ window.onscroll = ()=>{
         
     });
 }
+
+// Hamburger menu toggle
+hamburger.addEventListener('click', () => {
+    navbar.classList.toggle('open');
+});
+
+// Close nav when a link is clicked on mobile
+navbar.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () =>{
+        navbar.classList.remove('open')
+    });
+});
 
 type();
