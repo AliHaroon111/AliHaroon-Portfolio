@@ -1,15 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ali Haroon | Portfolio</title>
-  
-  <link rel="stylesheet" href="style.css">
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ali Haroon | Full Stack Developer Portfolio</title>
+        <meta name="description" content="Ali Haroon - BSCS student at COMSATS specializing in MERN stack development, secure backend architectures, and cross-platform mobile apps with Flutter & Firebase.">
+        <meta name="keywords" content="Ali Haroon, Full Stack Developer, MERN Stack, React, Node.js, MongoDB, Flutter, Portfolio">
+        <meta name="author" content="Ali Haroon">
+      
+        <!-- Open Graph / Social Sharing -->
+        <meta property="og:title" content="Ali Haroon | Full Stack Developer Portfolio">
+        <meta property="og:description" content="Building high-performance, secure web architectures with the MERN stack.">
+        <meta property="og:image" content="images/profile.webp">
+        <meta property="og:type" content="website">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Ali Haroon | Full Stack Developer Portfolio">
+        <meta name="twitter:description" content="Building high-performance, secure web architectures with the MERN stack.">
+        <meta name="twitter:image" content="images/profile.webp">
+      
+        <!-- Favicon -->
+        <link rel="icon" type="image/webp" href="images/profile.webp">
+      
+        <link rel="preconnect" href="https://unpkg.com">
+        <link rel="stylesheet" href="style.css">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+      
+      </head>
 <body>
+
+    <!-- Scroll progress bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
 
     <header class="header">
         <nav class="navbar" id="navbar">
@@ -50,24 +70,25 @@
 
     <section id="about" class="about">
     <div class="about-container">
-        <div class="about-text">
+        <!-- just add  reveal to the existing class attribute -->
+        <div class="about-text reveal">
             <h2>Beyond the <span>Code</span></h2>
             <p>I am currently a 6th-semester BSCS student at COMSATS. While my academic path provides the theory, my passion for the MERN stack drives my implementation.</p>
           <p>I specialize in building secure backend architectures and scalable systems. I don't just write code; I engineer solutions that are built to last.</p>
         </div>
 
-        <div class="stats-ribbon">
+        <div class="stats-ribbon reveal">
 
             <div class="stat-item">
-                <h3 class="counter">10+</h3>
+                <h3 class="counter" data-target="10">0+</h3>
                 <p>Projects Completed</p>
             </div>
             <div class="stat-item">
-                <h3 class="counter">5+</h3>
+                <h3 class="counter" data-target="5">0+</h3>
                 <p>Core Technology</p>
             </div>
             <div class="stat-item">
-                <h3 class="counter">100+</h3>
+                <h3 class="counter" data-target="100">0+</h3>
                 <p>Git Commits</p>
             </div>
 
@@ -78,7 +99,7 @@
     <section id="skills" class="skills">
         <h2 class="section-title">Technical <span>Skills</span></h2>
 
-        <div class="skills-grid">
+        <div class="skills-grid reveal">
             <div class="skill-card">
                 <i class="bx bxl-react"></i>
                 <h3>React.js</h3>
@@ -124,7 +145,7 @@
 
     <section id="services" class="services">
         <h2 class="section-title">My <span>Services</span></h2>
-        <div class="services-container">
+        <div class="services-container reveal">
 
             <div class="service-card">
                 <i class="bx bx-code-alt"></i>
@@ -148,7 +169,7 @@
 
     <section id="portfolio" class="portfolio">
         <h2>My <span>Portfolio</span></h2>
-        <div class="portfolio-grid">
+        <div class="portfolio-grid reveal">
             <div class="project-card">
                 <div class="project-img">
                     <img src="images/drum-kit.webp" alt="JS Drum Kit Screenshot" loading="lazy"
@@ -183,7 +204,7 @@
 
 
     <section id="contact" class="contact"><h2 class="section-title">Contact <span>Me</span></h2>
-    <div class="contact-container">
+    <div class="contact-container reveal">
         <div class="contact-info">
             <h3>Let's Work Together</h3>
             <p>I'm currently looking for new opportunities and my inbox is always open. Whether you have a question or just want to say hi, I'll try my best to get back to you!</p>
