@@ -170,41 +170,53 @@ if (!prefersReducedMotion) {
 // Dynamic GitHub Projects Fetching Functionality
 async function fetchGitHubProjects() {
     const username = "AliHaroon111";
-    const portfolioGrid = document.querySelector('.portfolio-grid');
+    // Targets the new distinct container safely
+    const githubGrid = document.getElementById('github-grid');
+    
+    if (!githubGrid) return; 
     
     try {
         const response = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=4`);
         if (!response.ok) throw new Error('Failed to fetch repositories');
         
         const repos = await response.json();
-        
-        // Filter out fork copies and your main profile configuration repository
         const filteredRepos = repos.filter(repo => !repo.fork && repo.name !== username);
+        
+        githubGrid.innerHTML = ""; // Clear loader states if any
         
         filteredRepos.forEach(repo => {
             const projectCard = document.createElement('div');
             projectCard.className = 'project-card';
             
+            // Re-engineered card design tailored for text-heavy API repos
             projectCard.innerHTML = `
-                <div class="project-img">
-                    <div style="width:100%; height:100%; background:linear-gradient(135deg, #0f2027, #203a43); display:flex; align-items:center; justify-content:center;">
-                        <i class="bx bx-code-block" style="font-size: 4rem; color: var(--primary-blue); opacity:0.4;"></i>
+                <div class="project-img" style="background: linear-gradient(135deg, #0d1b2a, #1b263b); height: 100%;">
+                    <div style="position: absolute; top: 20px; left: 20px; color: var(--neon-cyan); opacity: 0.15;">
+                        <i class="bx bx-code-alt" style="font-size: 5rem;"></i>
                     </div>
-                    <div class="img-overlay" style="transform: translateY(0); opacity: 1; background: rgba(8,8,8,0.85);">
-                        <h3>${repo.name.replace(/-/g, ' ')}</h3>
-                        <p>${repo.description || 'No description provided. Click below to inspect code repository architecture.'}</p>
-                        <div class="project-links" style="margin-top: 10px;">
-                            <a href="${repo.html_url}" target="_blank"><i class="bx bxl-github"></i> Inspect Repository</a>
+                    <div class="api-card-content" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; padding: 25px; display: flex; flex-direction: column; justify-content: space-between; z-index: 5;">
+                        <div>
+                            <h3 style="color: var(--neon-cyan); font-size: 1.3rem; margin-bottom: 10px;">
+                                ${repo.name.replace(/[-_]/g, ' ')}
+                            </h3>
+                            <p style="color: var(--text-gray); font-size: 0.9rem; line-height: 1.5; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical;">
+                                ${repo.description || 'No description provided. Click below to inspect code repository architecture.'}
+                            </p>
+                        </div>
+                        <div class="project-links" style="margin-top: 15px;">
+                            <a href="${repo.html_url}" target="_blank" style="color: var(--primary-blue); font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 5px;">
+                                <i class="bx bxl-github"></i> Inspect Repository
+                            </a>
                         </div>
                     </div>
                 </div>
             `;
-            portfolioGrid.appendChild(projectCard);
+            githubGrid.appendChild(projectCard);
         });
     } catch (error) {
         console.error("Error loading GitHub projects:", error);
+        githubGrid.innerHTML = `<p style="color: var(--text-gray); grid-column: 1/-1; text-align: center;">Unable to load live repositories at this moment.</p>`;
     }
 }
 
-// Initialize on execution sequence
 document.addEventListener("DOMContentLoaded", fetchGitHubProjects);

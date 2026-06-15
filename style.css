@@ -198,6 +198,10 @@ section {
     font-size: 0.9rem;
 }
 
+.sub-section-title span {
+    color: var(--neon-cyan);
+}
+
 
 /*Phase The Services Section */
 .services-container {
