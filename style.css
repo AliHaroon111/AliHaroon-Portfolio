@@ -508,6 +508,17 @@ nav a.active {
     transition: 0.3s;
 }
 
+/* Animated Hamburger Transformation */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
 /* ===== TABLET (max 992px) ===== */
 @media (max-width: 992px) {
     .home {
@@ -610,6 +621,44 @@ nav a.active {
         padding: 30px 20px;
     }
 }
+
+/* Custom Portfolio Form Styling */
+.portfolio-form {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: left;
+}
+
+.form-group input, 
+.form-group textarea {
+    width: 100%;
+    padding: 14px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    color: var(--text-white);
+    font-size: 1rem;
+    transition: 0.3s ease;
+}
+
+.form-group input:focus, 
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--neon-cyan);
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 0 10px rgba(0, 238, 255, 0.1);
+}
+
+.form-status-msg {
+    margin-top: 15px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+.form-status-msg.success { color: #00ff88; }
+.form-status-msg.error { color: #ff4a4a; }
+
 
 /* ===== SMALL MOBILE (max 480px) ===== */
 @media (max-width: 480px) {

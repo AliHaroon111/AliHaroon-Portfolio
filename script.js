@@ -72,9 +72,18 @@ window.onscroll = ()=>{
     if (scrollProgress) scrollProgress.style.width = scrollPercent + '%';
 }
 
-// Hamburger menu toggle
+// Hamburger menu toggle (Updated for smooth structural feedback)
 hamburger.addEventListener('click', () => {
     navbar.classList.toggle('open');
+    hamburger.classList.toggle('active');
+});
+
+// Close nav when a link is clicked on mobile
+navbar.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () =>{
+        navbar.classList.remove('open');
+        hamburger.classList.remove('active');
+    });
 });
 
 // Close nav when a link is clicked on mobile
@@ -157,3 +166,45 @@ if (!prefersReducedMotion) {
 } else if (textElement) {
     textElement.textContent = words[0];
 }
+
+// Dynamic GitHub Projects Fetching Functionality
+async function fetchGitHubProjects() {
+    const username = "AliHaroon111";
+    const portfolioGrid = document.querySelector('.portfolio-grid');
+    
+    try {
+        const response = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=4`);
+        if (!response.ok) throw new Error('Failed to fetch repositories');
+        
+        const repos = await response.json();
+        
+        // Filter out fork copies and your main profile configuration repository
+        const filteredRepos = repos.filter(repo => !repo.fork && repo.name !== username);
+        
+        filteredRepos.forEach(repo => {
+            const projectCard = document.createElement('div');
+            projectCard.className = 'project-card';
+            
+            projectCard.innerHTML = `
+                <div class="project-img">
+                    <div style="width:100%; height:100%; background:linear-gradient(135deg, #0f2027, #203a43); display:flex; align-items:center; justify-content:center;">
+                        <i class="bx bx-code-block" style="font-size: 4rem; color: var(--primary-blue); opacity:0.4;"></i>
+                    </div>
+                    <div class="img-overlay" style="transform: translateY(0); opacity: 1; background: rgba(8,8,8,0.85);">
+                        <h3>${repo.name.replace(/-/g, ' ')}</h3>
+                        <p>${repo.description || 'No description provided. Click below to inspect code repository architecture.'}</p>
+                        <div class="project-links" style="margin-top: 10px;">
+                            <a href="${repo.html_url}" target="_blank"><i class="bx bxl-github"></i> Inspect Repository</a>
+                        </div>
+                    </div>
+                </div>
+            `;
+            portfolioGrid.appendChild(projectCard);
+        });
+    } catch (error) {
+        console.error("Error loading GitHub projects:", error);
+    }
+}
+
+// Initialize on execution sequence
+document.addEventListener("DOMContentLoaded", fetchGitHubProjects);

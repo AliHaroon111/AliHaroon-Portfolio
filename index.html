@@ -207,11 +207,21 @@
     <div class="contact-container reveal">
         <div class="contact-info">
             <h3>Let's Work Together</h3>
-            <p>I'm currently looking for new opportunities and my inbox is always open. Whether you have a question or just want to say hi, I'll try my best to get back to you!</p>
-            <div class="contact-links">
-                <a href="mailto:aliharoon0111@gmail.com" class="btn">Email Me</a>
-                <a href="https://github.com/AliHaroon111" target="_blank" class="btn">GitHub Profile</a>
-            </div>
+            <p>I'm currently looking for new opportunities. Drop a message directly into my inbox!</p>
+            
+            <form id="contactForm" class="portfolio-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Your Name" required autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Your Email Address" required autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <textarea name="message" rows="5" placeholder="Your Message..." required></textarea>
+                </div>
+                <button type="submit" class="btn" style="border:none; cursor:pointer;">Send Message</button>
+            </form>
+            <div id="formStatus" class="form-status-msg"></div>
         </div>
     </div>
     </section>
