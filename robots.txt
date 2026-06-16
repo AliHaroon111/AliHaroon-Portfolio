@@ -1,0 +1,6 @@
+# Allow all crawlers to index the portfolio
+User-agent: *
+Allow: /
+
+# Point crawlers to the sitemap
+Sitemap: https://aliharoon111.github.io/AliHaroon-Portfolio/sitemap.xml
