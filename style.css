@@ -1185,3 +1185,179 @@ nav a.active {
 [data-theme="light"] .filter-btn.active {
     color: #ffffff;
 }
+
+
+/* ======================
+   GITHUB STATS SECTION
+   ====================== */
+
+   .github-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+/* Each stat card */
+.gh-stat-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 30px 20px;
+    text-align: center;
+    backdrop-filter: blur(5px);
+    transition: 0.3s ease;
+}
+
+.gh-stat-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 20px rgba(0, 238, 255, 0.15);
+}
+
+.gh-stat-card i {
+    font-size: 2rem;
+    color: var(--neon-cyan);
+    margin-bottom: 12px;
+}
+
+/* The number — uses same counter style as About stats */
+.gh-stat-card h3 {
+    font-size: 2rem;
+    color: var(--neon-cyan);
+    margin-bottom: 6px;
+}
+
+.gh-stat-card p {
+    color: var(--text-gray);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Most starred repo card */
+.gh-top-repo {
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: 3px solid var(--neon-cyan);
+    border-radius: 16px;
+    padding: 25px 30px;
+    margin-bottom: 25px;
+    backdrop-filter: blur(5px);
+    transition: 0.3s ease;
+}
+
+.gh-top-repo:hover {
+    background: rgba(255, 255, 255, 0.07);
+}
+
+.gh-top-repo-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.gh-top-label {
+    font-size: 0.8rem;
+    color: var(--neon-cyan);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.gh-top-repo h3 {
+    font-size: 1.3rem;
+    color: var(--text-white);
+    margin-bottom: 6px;
+    text-transform: capitalize;
+}
+
+.gh-repo-desc {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Language bars section */
+.gh-languages {
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 25px 30px;
+    backdrop-filter: blur(5px);
+}
+
+.gh-lang-bars {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Each language row: label + bar + percentage */
+.gh-lang-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.gh-lang-name {
+    width: 100px;
+    font-size: 0.85rem;
+    color: var(--text-white);
+    flex-shrink: 0;
+}
+
+.gh-lang-bar-bg {
+    flex: 1;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* The actual filled bar — width set by JS */
+.gh-lang-bar-fill {
+    height: 100%;
+    border-radius: 10px;
+    background: linear-gradient(90deg, var(--primary-blue), var(--neon-cyan));
+    width: 0%;
+    /* Animate from 0 to actual width when it appears */
+    transition: width 1s ease;
+}
+
+.gh-lang-percent {
+    width: 40px;
+    font-size: 0.8rem;
+    color: var(--text-gray);
+    text-align: right;
+    flex-shrink: 0;
+}
+
+/* Light theme overrides */
+[data-theme="light"] .gh-stat-card,
+[data-theme="light"] .gh-top-repo,
+[data-theme="light"] .gh-languages {
+    border-color: rgba(0, 0, 0, 0.12);
+    background: rgba(255, 255, 255, 0.7);
+}
+
+[data-theme="light"] .gh-top-repo h3,
+[data-theme="light"] .gh-lang-name {
+    color: var(--text-white);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .gh-top-repo-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .gh-lang-name {
+        width: 80px;
+        font-size: 0.78rem;
+    }
+}

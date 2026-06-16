@@ -352,3 +352,107 @@ filterBtns.forEach(btn => {
         });
     });
 });
+
+// ======================
+// GITHUB STATS WIDGET
+// ======================
+async function fetchGitHubStats() {
+    const username = "AliHaroon111";
+
+    try {
+        // --- CALL 1: Fetch user profile ---
+        // This gives us: public_repos, followers, following
+        const userRes = await fetch(`https://api.github.com/users/${username}`);
+        if (!userRes.ok) throw new Error('User fetch failed');
+        const user = await userRes.json();
+
+        // Inject profile stats into the cards
+        document.getElementById('gh-repos').textContent     = user.public_repos;
+        document.getElementById('gh-followers').textContent = user.followers;
+
+        // --- CALL 2: Fetch ALL repos to calculate stars + languages ---
+        // per_page=100 gets max repos in one call
+        const reposRes = await fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated`);
+        if (!reposRes.ok) throw new Error('Repos fetch failed');
+        const repos = await reposRes.json();
+
+        // Filter out forks — only count your own work
+        const ownRepos = repos.filter(r => !r.fork);
+
+        // --- Calculate total stars ---
+        // reduce() loops through all repos and adds up stargazers_count
+        const totalStars = ownRepos.reduce((sum, repo) => sum + repo.stargazers_count, 0);
+        document.getElementById('gh-stars').textContent = totalStars;
+
+        // --- Find most starred repo ---
+        // sort() by stars descending, take first one
+        const topRepo = [...ownRepos].sort((a, b) => b.stargazers_count - a.stargazers_count)[0];
+        if (topRepo) {
+            document.getElementById('gh-repo-name').textContent =
+                topRepo.name.replace(/[-_]/g, ' ');
+            document.getElementById('gh-repo-desc').textContent =
+                topRepo.description || 'No description provided.';
+            document.getElementById('gh-repo-link').href = topRepo.html_url;
+        }
+
+        // --- Calculate top languages ---
+        // Build an object: { JavaScript: 12, CSS: 5, ... } counting repos per language
+        const langCount = {};
+        ownRepos.forEach(repo => {
+            if (repo.language) {
+                // If language already in object, add 1. Otherwise start at 1.
+                langCount[repo.language] = (langCount[repo.language] || 0) + 1;
+            }
+        });
+
+        // Sort languages by count, take top 5
+        const sortedLangs = Object.entries(langCount)
+            .sort((a, b) => b[1] - a[1])  // sort by count descending
+            .slice(0, 5);                  // take only top 5
+
+        // Show top language in the stat card
+        if (sortedLangs.length > 0) {
+            document.getElementById('gh-top-lang').textContent = sortedLangs[0][0];
+        }
+
+        // --- Build language bars ---
+        const totalLangCount = sortedLangs.reduce((sum, [, count]) => sum + count, 0);
+        const langBarsContainer = document.getElementById('gh-lang-bars');
+        langBarsContainer.innerHTML = ''; // clear any placeholder
+
+        sortedLangs.forEach(([lang, count]) => {
+            const percent = Math.round((count / totalLangCount) * 100);
+
+            // Build each row: name | bar | percentage
+            const row = document.createElement('div');
+            row.className = 'gh-lang-row';
+            row.innerHTML = `
+                <span class="gh-lang-name">${lang}</span>
+                <div class="gh-lang-bar-bg">
+                    <div class="gh-lang-bar-fill" data-width="${percent}"></div>
+                </div>
+                <span class="gh-lang-percent">${percent}%</span>
+            `;
+            langBarsContainer.appendChild(row);
+        });
+
+        // Animate bars — set width AFTER they're in the DOM
+        // requestAnimationFrame waits for next paint cycle so transition fires
+        requestAnimationFrame(() => {
+            document.querySelectorAll('.gh-lang-bar-fill').forEach(bar => {
+                bar.style.width = bar.getAttribute('data-width') + '%';
+            });
+        });
+
+    } catch (error) {
+        console.error('GitHub Stats error:', error);
+        // Silently fail — just show dashes, don't break the page
+        ['gh-repos', 'gh-followers', 'gh-stars', 'gh-top-lang'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.textContent = 'N/A';
+        });
+    }
+}
+
+// Run on page load
+document.addEventListener('DOMContentLoaded', fetchGitHubStats);
