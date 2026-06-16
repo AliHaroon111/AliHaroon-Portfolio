@@ -4,7 +4,7 @@ let navLinks = document.querySelectorAll('header nav a');
 // Hamburger menu toggle
 const hamburger = document.getElementById('hamburger');
 const navbar = document.getElementById('navbar');
-const words = ["Full Stack Developer", "BSCS Student", "Node.js Enthusiast"];
+const words = ["Backend Developer", "Node.js & Express Engineer", "MongoDB Specialist", "BSCS Student"];
 let wordIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
