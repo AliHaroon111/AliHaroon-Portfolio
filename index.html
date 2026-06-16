@@ -24,9 +24,9 @@
         <link rel="preconnect" href="https://unpkg.com">
         <link rel="stylesheet" href="style.css">
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-      
-       <!-- EmailJS CDN — defer prevents render blocking -->
-        <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
+        <script src="script.js" defer></script>
+       <!-- EmailJS CDN  -->
+        <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 
       </head>
@@ -304,20 +304,20 @@
     </section>
 
 
-    <footer class="footer">
         <!-- Resume Modal -->
-    <div class="resume-modal-backdrop" id="resumeModal" onclick="closeResumeModal()">
-        <div class="resume-modal-box" onclick="event.stopPropagation()">
-            <div class="resume-modal-header">
-                <h3>Ali Haroon — Resume</h3>
-                <div class="resume-modal-actions">
-                    <a href="Ali-Haroon-Cv.pdf" download class="btn" style="padding: 8px 18px; font-size: 0.85rem;">📥 Download</a>
-                    <button class="modal-close-btn" onclick="closeResumeModal()" aria-label="Close modal">✕</button>
+        <div class="resume-modal-backdrop" id="resumeModal" onclick="closeResumeModal()">
+            <div class="resume-modal-box" onclick="event.stopPropagation()">
+                <div class="resume-modal-header">
+                    <h3>Ali Haroon — Resume</h3>
+                    <div class="resume-modal-actions">
+                        <a href="Ali-Haroon-Cv.pdf" download class="btn" style="padding: 8px 18px; font-size: 0.85rem;">📥 Download</a>
+                        <button class="modal-close-btn" onclick="closeResumeModal()" aria-label="Close modal">✕</button>
+                    </div>
                 </div>
+                <iframe src="Ali-Haroon-Cv.pdf" title="Ali Haroon Resume" class="resume-iframe"></iframe>
             </div>
-            <iframe src="Ali-Haroon-Cv.pdf" title="Ali Haroon Resume" class="resume-iframe"></iframe>
         </div>
-    </div>
+    <footer class="footer">
         <p>Designed & Built by <span>Ali Haroon</span></p>
         <p class="footer-sub">Building secure, scalable, and production-ready web applications with JavaScript and Node.js.</p>
         <p class="footer-sub">© 2025 · BSCS @ COMSATS · Open to opportunities</p>

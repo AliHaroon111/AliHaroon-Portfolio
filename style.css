@@ -8,6 +8,12 @@
     --text-gray: #b5b5b5;
 }
 
+/* Performance: font-display swap prevents invisible text during font load */
+@font-face {
+    font-family: 'Helvetica Neue';
+    font-display: swap;
+}
+
 * {
     margin: 0;
     padding: 0;
