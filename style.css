@@ -872,7 +872,7 @@ nav a.active {
    these values override the default dark ones */
    [data-theme="light"] {
     --primary-blue: #0077cc;
-    --neon-cyan: #0099bb;
+    --neon-cyan: #007a90;
     --bg-color: #f0f4f8;
     --card-bg: rgba(0, 0, 0, 0.04);
     --text-white: #111111;
@@ -900,10 +900,102 @@ nav a.active {
     border-color: rgba(0, 0, 0, 0.12);
     background: rgba(255, 255, 255, 0.7);
 }
+/* Keep portfolio card overlay text neon in light theme — same as dark */
+[data-theme="light"] .img-overlay h3 {
+    color: #ffffff;
+}
 
+[data-theme="light"] .img-overlay p {
+    color: #cccccc;
+}
+
+[data-theme="light"] .project-links a {
+    color: var(--neon-cyan);
+}
 [data-theme="light"] .project-card {
     border-color: rgba(0, 0, 0, 0.12);
 }
+
+/* Fix text visibility in light mode */
+[data-theme="light"] .section-title,
+[data-theme="light"] .about-text h2,
+[data-theme="light"] .sub-section-title {
+    color: var(--text-white);
+}
+
+[data-theme="light"] .sub-section-title span {
+    color: var(--neon-cyan);
+}
+
+[data-theme="light"] .timeline-content h3,
+[data-theme="light"] .learning-item h3 {
+    color: var(--text-white);
+}
+
+/* =====================
+   LIGHT THEME — GLOBAL TEXT FIX
+   Force ALL text elements to use dark color in light mode
+   ===================== */
+[data-theme="light"] h1,
+[data-theme="light"] h2,
+[data-theme="light"] h3,
+[data-theme="light"] h4,
+[data-theme="light"] p,
+[data-theme="light"] a,
+[data-theme="light"] span,
+[data-theme="light"] .hero-info h3,
+[data-theme="light"] .section-title,
+[data-theme="light"] .highlight-item,
+[data-theme="light"] .tech-tag,
+[data-theme="light"] .stat-item p,
+[data-theme="light"] nav a {
+    color: var(--text-white);
+}
+
+/* But keep accent elements their cyan color */
+[data-theme="light"] .section-title span,
+[data-theme="light"] .about-text h2 span,
+[data-theme="light"] .typewriter,
+[data-theme="light"] .tech-category-title,
+[data-theme="light"] .stat-item h3,
+[data-theme="light"] .timeline-year,
+[data-theme="light"] .contact-info h3,
+[data-theme="light"] .highlight-item i,
+[data-theme="light"] .sub-section-title span,
+[data-theme="light"] nav a.active,
+[data-theme="light"] nav a:hover {
+    color: var(--neon-cyan);
+}
+
+/* Keep buttons white text always */
+[data-theme="light"] .btn {
+    color: #ffffff;
+}
+
+/* Keep social icon borders visible */
+[data-theme="light"] .social-icons a {
+    color: var(--neon-cyan);
+    border-color: var(--neon-cyan);
+}
+
+/* Tech tags readable in light */
+[data-theme="light"] .tech-tag-learning {
+    color: var(--neon-cyan);
+}
+
+/* Form inputs */
+[data-theme="light"] .form-group input,
+[data-theme="light"] .form-group textarea {
+    color: #111111;
+    background: rgba(0, 0, 0, 0.04);
+    border-color: rgba(0, 0, 0, 0.15);
+}
+
+/* Footer */
+[data-theme="light"] .footer {
+    border-top-color: rgba(0, 0, 0, 0.1);
+}
+
 
 /* ====================
    THEME TOGGLE BUTTON
