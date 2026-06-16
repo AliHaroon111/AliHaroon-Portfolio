@@ -25,8 +25,8 @@
         <link rel="stylesheet" href="style.css">
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
       
-        <!-- EmailJS CDN -->
-        <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+       <!-- EmailJS CDN — defer prevents render blocking -->
+        <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
 
 
       </head>
@@ -70,7 +70,7 @@
         <div class="profile-glow">
             <div class="profile-img-box">
                 <!-- Replace with your actual photo path -->
-                <img src="images/profile.webp" alt="Ali Haroon" loading="lazy"
+                <img src="images/profile.webp" alt="Ali Haroon" width="350" height="350" loading="lazy"
                      onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'font-size:5rem;font-weight:500;color:#018DED;\'>AH</span>'">
             </div>
         </div>
@@ -245,7 +245,7 @@
         <div class="portfolio-grid">
             <div class="project-card" data-filter="vanilla-js">
                 <div class="project-img">
-                    <img src="images/drum-kit.webp" alt="JS Drum Kit Screenshot" loading="lazy"
+                    <img src="images/drum-kit.webp" alt="JS Drum Kit Screenshot" width="600" height="300" loading="lazy"
                          onerror="this.style.display='none'; this.parentElement.style.background='#0f2027'">
                     <div class="img-overlay">
                         <h3>JS Drum Kit</h3>
@@ -259,7 +259,7 @@
         
             <div class="project-card" data-filter="vanilla-js">
                 <div class="project-img">
-                    <img src="images/clock.webp" alt="Analog Clock Screenshot" loading="lazy"
+                    <img src="images/clock.webp" alt="Analog Clock Screenshot"  width="600" height="300" loading="lazy"
                          onerror="this.style.display='none'; this.parentElement.style.background='#0f2027'">
                     <div class="img-overlay">
                         <h3>Analog JS Clock</h3>
@@ -298,7 +298,6 @@
                 </div>
                 <button type="submit" id="submitBtn" class="btn" style="border:none; cursor:pointer;">Send Message 🚀</button>
             </form>
-            <div id="formStatus" class="form-status-msg"></div>
             <div id="formStatus" class="form-status-msg"></div>
         </div>
     </div>
