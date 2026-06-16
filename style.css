@@ -1126,3 +1126,56 @@ nav a.active {
         font-size: 0.95rem;
     }
 }
+
+
+
+/* =====================
+   PROJECT FILTER BUTTONS
+   ===================== */
+   .filter-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 35px;
+}
+
+.filter-btn {
+    padding: 8px 22px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: transparent;
+    color: var(--text-gray);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-family: 'Helvetica Neue', sans-serif;
+}
+
+.filter-btn:hover {
+    border-color: var(--neon-cyan);
+    color: var(--neon-cyan);
+}
+
+/* Active filter button */
+.filter-btn.active {
+    background: var(--primary-blue);
+    border-color: var(--primary-blue);
+    color: #ffffff;
+    box-shadow: 0 0 15px rgba(1, 141, 237, 0.4);
+}
+
+/* Card hide/show animation */
+.project-card.hidden {
+    display: none;
+}
+
+/* Light theme filter buttons */
+[data-theme="light"] .filter-btn {
+    border-color: rgba(0, 0, 0, 0.15);
+    color: var(--text-gray);
+}
+
+[data-theme="light"] .filter-btn.active {
+    color: #ffffff;
+}

@@ -1,3 +1,6 @@
+// Initialize EmailJS public key
+emailjs.init("Bxv-OmZrxtYjIYkWQ"); // 🔴 EmailJS public key
+
 const textElement = document.querySelector('.typewriter')
 let sections = document.querySelectorAll('section')
 let navLinks = document.querySelectorAll('header nav a');
@@ -262,4 +265,90 @@ function closeResumeModal() {
 // Close modal with Escape key
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeResumeModal();
+});
+
+
+// ======================
+// EMAILJS CONTACT FORM
+// ======================
+const contactForm = document.getElementById('contactForm');
+const formStatus = document.getElementById('formStatus');
+const submitBtn = document.getElementById('submitBtn');
+
+contactForm.addEventListener('submit', function(e) {
+    e.preventDefault(); // Stop page reload — we handle submission via JS
+
+    // Get values from inputs
+    const name    = document.getElementById('from_name').value.trim();
+    const email   = document.getElementById('from_email').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    // Basic validation
+    if (!name || !email || !message) {
+        formStatus.textContent = 'Please fill in all fields.';
+        formStatus.className = 'form-status-msg error';
+        return;
+    }
+
+    // Disable button while sending
+    submitBtn.textContent = 'Sending...';
+    submitBtn.disabled = true;
+
+    // Send via EmailJS
+    // emailjs.send(serviceID, templateID, templateParams)
+    emailjs.send(
+        "service_7guhuc5",   // 🔴 EmailJS Service ID
+        "template_9xuwgz1",  // 🔴 EmailJS Template ID
+        {
+            from_name:  name,
+            from_email: email,
+            message:    message
+        }
+    ).then(() => {
+        // SUCCESS
+        formStatus.textContent = '✅ Message sent! I\'ll get back to you soon.';
+        formStatus.className = 'form-status-msg success';
+        contactForm.reset(); // Clear all fields
+        submitBtn.textContent = 'Send Message 🚀';
+        submitBtn.disabled = false;
+
+    }).catch((error) => {
+        // ERROR
+        console.error('EmailJS error:', error);
+        formStatus.textContent = '❌ Something went wrong. Try emailing me directly at aliharoon0111@gmail.com';
+        formStatus.className = 'form-status-msg error';
+        submitBtn.textContent = 'Send Message 🚀';
+        submitBtn.disabled = false;
+    });
+});
+
+// ======================
+// PROJECT FILTER BUTTONS
+// ======================
+const filterBtns = document.querySelectorAll('.filter-btn');
+// querySelectorAll — grabs ALL elements matching a CSS selector, returns a NodeList
+
+filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        // 1. Remove active class from all buttons
+        filterBtns.forEach(b => b.classList.remove('active'));
+        // 2. Add active class to clicked button
+        btn.classList.add('active');
+
+        const filter = btn.getAttribute('data-filter');
+        // getAttribute — reads the value of data-filter on the clicked button
+
+        // 3. Get ALL static project cards (not GitHub API ones)
+        const cards = document.querySelectorAll('.portfolio-grid:first-of-type .project-card');
+
+        cards.forEach(card => {
+            if (filter === 'all') {
+                card.classList.remove('hidden'); // show all
+            } else if (card.getAttribute('data-filter') === filter) {
+                card.classList.remove('hidden'); // show matching
+            } else {
+                card.classList.add('hidden'); // hide non-matching
+            }
+        });
+    });
 });

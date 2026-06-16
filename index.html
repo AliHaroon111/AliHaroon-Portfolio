@@ -25,6 +25,10 @@
         <link rel="stylesheet" href="style.css">
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
       
+        <!-- EmailJS CDN -->
+        <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+
       </head>
 <body>
 
@@ -230,8 +234,16 @@
     <section id="portfolio" class="portfolio">
         <h2 class="section-title">My <span>Portfolio</span></h2>
         
+         <!-- Filter Buttons -->
+         <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="vanilla-js">Vanilla JS</button>
+            <button class="filter-btn" data-filter="backend">Backend</button>
+            <button class="filter-btn" data-filter="fullstack">Full Stack</button>
+        </div>
+
         <div class="portfolio-grid">
-            <div class="project-card">
+            <div class="project-card" data-filter="vanilla-js">
                 <div class="project-img">
                     <img src="images/drum-kit.webp" alt="JS Drum Kit Screenshot" loading="lazy"
                          onerror="this.style.display='none'; this.parentElement.style.background='#0f2027'">
@@ -245,7 +257,7 @@
                 </div>
             </div>
         
-            <div class="project-card">
+            <div class="project-card" data-filter="vanilla-js">
                 <div class="project-img">
                     <img src="images/clock.webp" alt="Analog Clock Screenshot" loading="lazy"
                          onerror="this.style.display='none'; this.parentElement.style.background='#0f2027'">
@@ -274,18 +286,19 @@
             <h3>Let's Work Together</h3>
             <p>I'm currently looking for new opportunities. Drop a message directly into my inbox!</p>
             
-            <form id="contactForm" class="portfolio-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+            <form id="contactForm" class="portfolio-form">
                 <div class="form-group">
-                    <input type="text" name="name" placeholder="Your Name" required autocomplete="off">
+                    <input type="text" id="from_name" placeholder="Your Name" required autocomplete="off">
                 </div>
                 <div class="form-group">
-                    <input type="email" name="email" placeholder="Your Email Address" required autocomplete="off">
+                    <input type="email" id="from_email" placeholder="Your Email Address" required autocomplete="off">
                 </div>
                 <div class="form-group">
-                    <textarea name="message" rows="5" placeholder="Your Message..." required></textarea>
+                    <textarea id="message" rows="5" placeholder="Your Message..." required></textarea>
                 </div>
-                <button type="submit" class="btn" style="border:none; cursor:pointer;">Send Message</button>
+                <button type="submit" id="submitBtn" class="btn" style="border:none; cursor:pointer;">Send Message 🚀</button>
             </form>
+            <div id="formStatus" class="form-status-msg"></div>
             <div id="formStatus" class="form-status-msg"></div>
         </div>
     </div>
