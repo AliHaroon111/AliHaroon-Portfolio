@@ -43,6 +43,9 @@
         <button class="hamburger" id="hamburger" aria-label="Toggle menu">
             <span></span><span></span><span></span>
         </button>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+            <i class="bx bx-sun" id="themeIcon"></i>
+        </button>
     </header>
 
   <div class="container">
@@ -57,7 +60,7 @@
                 <a href="https://www.linkedin.com/in/ali-haroon-0b10a13a7/" target="_blank"><i class='bx bxl-linkedin'></i></a>
             </div>
             <a href="Ali-Haroon-Cv.pdf" download class="btn" style="display:inline-block; margin-top: 20px;">📥 Download CV</a>
-            <a href="Ali-Haroon-Cv.pdf" target="_blank" class="btn btn-outline" style="display:inline-block; margin-top: 20px;">📄 View Resume</a>
+            <button onclick="openResumeModal()" class="btn btn-outline" style="display:inline-block; margin-top: 20px; border:none; cursor:pointer;">📄 View Resume</button>
         </div>
     
         <div class="profile-glow">
@@ -290,6 +293,19 @@
 
 
     <footer class="footer">
+        <!-- Resume Modal -->
+    <div class="resume-modal-backdrop" id="resumeModal" onclick="closeResumeModal()">
+        <div class="resume-modal-box" onclick="event.stopPropagation()">
+            <div class="resume-modal-header">
+                <h3>Ali Haroon — Resume</h3>
+                <div class="resume-modal-actions">
+                    <a href="Ali-Haroon-Cv.pdf" download class="btn" style="padding: 8px 18px; font-size: 0.85rem;">📥 Download</a>
+                    <button class="modal-close-btn" onclick="closeResumeModal()" aria-label="Close modal">✕</button>
+                </div>
+            </div>
+            <iframe src="Ali-Haroon-Cv.pdf" title="Ali Haroon Resume" class="resume-iframe"></iframe>
+        </div>
+    </div>
         <p>Designed & Built by <span>Ali Haroon</span></p>
         <p class="footer-sub">Building secure, scalable, and production-ready web applications with JavaScript and Node.js.</p>
         <p class="footer-sub">© 2025 · BSCS @ COMSATS · Open to opportunities</p>

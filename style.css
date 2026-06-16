@@ -864,3 +864,173 @@ nav a.active {
         grid-template-columns: 1fr;
     }
 }
+
+/* =====================
+   LIGHT THEME VARIABLES
+   =====================
+   When JS sets data-theme="light" on <html>,
+   these values override the default dark ones */
+   [data-theme="light"] {
+    --primary-blue: #0077cc;
+    --neon-cyan: #0099bb;
+    --bg-color: #f0f4f8;
+    --card-bg: rgba(0, 0, 0, 0.04);
+    --text-white: #111111;
+    --text-gray: #555555;
+}
+
+/* Light theme specific overrides */
+[data-theme="light"] header {
+    background: rgba(240, 244, 248, 0.85);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .navbar {
+    background: rgba(240, 244, 248, 0.97);
+}
+
+[data-theme="light"] .skill-card,
+[data-theme="light"] .service-card,
+[data-theme="light"] .tech-category,
+[data-theme="light"] .learning-item,
+[data-theme="light"] .highlight-item,
+[data-theme="light"] .timeline-item,
+[data-theme="light"] .contact-container,
+[data-theme="light"] .stats-ribbon {
+    border-color: rgba(0, 0, 0, 0.12);
+    background: rgba(255, 255, 255, 0.7);
+}
+
+[data-theme="light"] .project-card {
+    border-color: rgba(0, 0, 0, 0.12);
+}
+
+/* ====================
+   THEME TOGGLE BUTTON
+   ==================== */
+.theme-toggle {
+    background: none;
+    border: 2px solid var(--neon-cyan);
+    color: var(--neon-cyan);
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.3s ease;
+    margin-left: 15px;
+    flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+    background: var(--neon-cyan);
+    color: var(--bg-color);
+    box-shadow: 0 0 15px var(--neon-cyan);
+}
+
+/* ====================
+   RESUME MODAL
+   ==================== */
+
+/* The dark backdrop that covers the whole screen */
+.resume-modal-backdrop {
+    display: none;                  /* hidden by default */
+    position: fixed;
+    inset: 0;                       /* shorthand for top/right/bottom/left: 0 */
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    backdrop-filter: blur(4px);
+}
+
+/* JS adds this class to show the modal */
+.resume-modal-backdrop.open {
+    display: flex;
+}
+
+/* The white box inside the backdrop */
+.resume-modal-box {
+    background: #111;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    width: 100%;
+    max-width: 860px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+[data-theme="light"] .resume-modal-box {
+    background: #fff;
+    border-color: rgba(0, 0, 0, 0.15);
+}
+
+/* Header bar inside the modal */
+.resume-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
+}
+
+[data-theme="light"] .resume-modal-header {
+    border-bottom-color: rgba(0, 0, 0, 0.1);
+}
+
+.resume-modal-header h3 {
+    color: var(--neon-cyan);
+    font-size: 1.1rem;
+}
+
+.resume-modal-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ✕ close button */
+.modal-close-btn {
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--text-white);
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.modal-close-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* The PDF iframe fills remaining space */
+.resume-iframe {
+    width: 100%;
+    flex: 1;
+    border: none;
+    min-height: 500px;
+}
+
+/* Mobile modal */
+@media (max-width: 768px) {
+    .resume-modal-box {
+        max-height: 95vh;
+    }
+
+    .resume-modal-header {
+        padding: 12px 16px;
+    }
+
+    .resume-modal-header h3 {
+        font-size: 0.95rem;
+    }
+}

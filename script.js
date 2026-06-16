@@ -220,3 +220,46 @@ async function fetchGitHubProjects() {
 }
 
 document.addEventListener("DOMContentLoaded", fetchGitHubProjects);
+
+// ======================
+// THEME TOGGLE
+// ======================
+// On page load, read saved preference from localStorage
+// If user had set light mode before, apply it immediately
+const themeToggleBtn = document.getElementById('themeToggle');
+const themeIcon = document.getElementById('themeIcon');
+const savedTheme = localStorage.getItem('theme') || 'dark';
+
+// Apply saved theme on load
+document.documentElement.setAttribute('data-theme', savedTheme);
+// Show correct icon: sun = currently dark (click to go light), moon = currently light (click to go dark)
+themeIcon.className = savedTheme === 'dark' ? 'bx bx-sun' : 'bx bx-moon';
+
+themeToggleBtn.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+
+    // Swap icon
+    themeIcon.className = next === 'dark' ? 'bx bx-sun' : 'bx bx-moon';
+});
+
+// ======================
+// RESUME MODAL
+// ======================
+function openResumeModal() {
+    document.getElementById('resumeModal').classList.add('open');
+    document.body.style.overflow = 'hidden'; // prevent background scroll
+}
+
+function closeResumeModal() {
+    document.getElementById('resumeModal').classList.remove('open');
+    document.body.style.overflow = ''; // restore scroll
+}
+
+// Close modal with Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeResumeModal();
+});
